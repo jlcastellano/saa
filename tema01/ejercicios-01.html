@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios Prácticos - De la IA Clásica al Aprendizaje Automático</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            padding-left: 15px;
+            border-left: 4px solid #3498db;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .intro {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .ejercicio {
+            background-color: #fff;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .ejercicio-header {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            margin: -25px -25px 20px -25px;
+            border-radius: 6px 6px 0 0;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .objetivos {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #2980b9;
+        }
+        
+        .objetivos h4 {
+            color: #2980b9;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .objetivos ul {
+            margin-left: 20px;
+        }
+        
+        .objetivos li {
+            margin-bottom: 8px;
+        }
+        
+        .enunciado {
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+        
+        .apartados {
+            margin-top: 20px;
+        }
+        
+        .apartado {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid #95a5a6;
+            border-radius: 4px;
+        }
+        
+        .apartado strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .recursos {
+            background-color: #fff9e6;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .recursos h4 {
+            color: #f39c12;
+            margin-bottom: 10px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 5px 5px 5px 0;
+        }
+        
+        .badge-nivel {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .badge-tiempo {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .badge-tipo {
+            background-color: #9b59b6;
+            color: white;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+        }
+        
+        .nota {
+            background-color: #fef5e7;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .nota strong {
+            color: #f39c12;
+        }
+        
+        ul {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ejercicios Prácticos: De la IA Clásica al Aprendizaje Automático</h1>
+        
+        <div class="intro">
+            <p><strong>Objetivo General:</strong> Los siguientes ejercicios están diseñados para consolidar y profundizar los conceptos fundamentales sobre la transición de la IA clásica al paradigma del aprendizaje automático. Cada ejercicio combina aspectos teóricos, análisis crítico y aplicación práctica.</p>
+        </div>
+
+        <div class="ejercicio">
+            <div class="ejercicio-header">
+                Análisis Comparativo entre Sistemas Expertos y Modelos de Aprendizaje Automático
+            </div>
+
+            
+            <div class="objetivos">
+                <h4>📋 Objetivos de aprendizaje:</h4>
+                <ul>
+                    <li>Comprender las diferencias fundamentales entre IA clásica y aprendizaje automático</li>
+                    <li>Analizar las ventajas y limitaciones de cada paradigma en contextos específicos</li>
+                    <li>Desarrollar criterios para seleccionar el enfoque más apropiado según el problema</li>
+                </ul>
+            </div>
+            
+            <div class="enunciado">
+                <h3>Enunciado:</h3>
+                <p>Imagina que trabajas como consultor de IA para una empresa del sector sanitario que necesita desarrollar un sistema de apoyo al diagnóstico médico. La dirección está debatiendo entre implementar un <strong>sistema experto tradicional</strong> basado en reglas (IA clásica) o un <strong>modelo de aprendizaje automático</strong> entrenado con datos históricos de pacientes.</p>
+            </div>
+            
+            <div class="apartados">
+                <div class="apartado">
+                    <strong>Apartado A) Análisis de enfoques (40%)</strong>
+                    Para cada paradigma (Sistema Experto vs Modelo de Aprendizaje Automático), elabora un documento que incluya:
+                    <ul>
+                        <li>Descripción de cómo funcionaría el sistema en este contexto específico</li>
+                        <li>Ventajas principales de este enfoque para el problema planteado</li>
+                        <li>Inconvenientes y riesgos asociados</li>
+                        <li>Requisitos técnicos y recursos necesarios para su implementación</li>
+                    </ul>
+                </div>
+                
+                <div class="apartado">
+                    <strong>Apartado B) Caso práctico de decisión (30%)</strong>
+                    Plantea dos escenarios médicos específicos:
+                    <ul>
+                        <li><strong>Escenario 1:</strong> Diagnóstico de una enfermedad bien documentada con protocolos claros y establecidos</li>
+                        <li><strong>Escenario 2:</strong> Detección temprana de patrones complejos en imágenes médicas</li>
+                    </ul>
+                    Para cada escenario, justifica razonadamente qué enfoque sería más apropiado y por qué.
+                </div>
+                
+                <div class="apartado">
+                    <strong>Apartado C) Propuesta híbrida (30%)</strong>
+                    Diseña una arquitectura que combine ambos enfoques, explicando:
+                    <ul>
+                        <li>Cómo se integrarían sistema experto y modelo de aprendizaje automático</li>
+                        <li>Qué tareas realizaría cada componente</li>
+                        <li>Ventajas de esta solución híbrida frente a implementaciones puras</li>
+                        <li>Diagrama de la arquitectura propuesta</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="recursos">
+                <h4>💡 Recursos y orientaciones:</h4>
+                <ul>
+                    <li>Revisa las secciones sobre IA Débil y las ventajas/inconvenientes de cada paradigma</li>
+                    <li>Considera aspectos como interpretabilidad, mantenimiento, escalabilidad y seguridad</li>
+                    <li>Investiga casos reales como Watson for Oncology mencionado en el material</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>
