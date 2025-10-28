@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De la IA Clásica al Aprendizaje Automático</title>
+    <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/vs2015.min.css">
+        <style>
+        /* CSS adicional para referencias y elementos pedagógicos */
+        .reference {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.25rem;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .reference:hover {
+            background: var(--primary-purple);
+            text-decoration: none;
+        }
+
+        .references-section {
+            background: var(--light-blue);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .references-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .reference-item {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .reference-item::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .reference-item a {
+            color: var(--primary-blue);
+            word-break: break-all;
+        }
+
+        .example-highlight {
+            background: linear-gradient(120deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-purple);
+        }
+
+        .example-highlight h4 {
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .example-highlight h4::before {
+            content: '💡';
+            font-size: 1.5rem;
+        }
+
+        .key-concept {
+            background: var(--light-purple);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-purple);
+        }
+
+        .key-concept strong {
+            color: var(--primary-purple);
+        }
+
+        .formula-box {
+            background: var(--code-bg);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .formula-label {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--primary-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .comparison-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .advantages-list li {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .advantages-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .disadvantages-list li {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .disadvantages-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-purple);
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-purple);
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-purple);
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Sistemas de Aprendizaje Automático</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="content-header">
+                <h1 class="content-title">De la IA Clásica al Aprendizaje Automático</h1>
+                <p class="content-subtitle">Unidad introductoria al paradigma actual de la IA</p>
+            </div>
+
+            <section class="lesson-section">
+                <h2 class="section-title">2.1.- Aprendizaje Automático y Estadística</h2>
+
+                <p class="text-content">
+                    Como ya hemos, la evolución de la inteligencia artificial se ha basado en
+                    tratar de ser capaz de actuar como los humanos, en primera instancia, y tratar de predecir el
+                    comportamiento más probable o deseable de un sistema en el planteamiento más actual. Para esto, las
+                    técnicas más prometedoras son las que utilizan <strong>modelos probabilísticos</strong> que,
+                    precisamente, son capaces de modelizar mejor los datos observados.
+                </p>
+
+                <div class="key-concept">
+                    Podemos decir, que las técnicas de <strong>aprendizaje automático</strong>, básicamente, miran el
+                    problema desde fuera y configuran sus propias reglas para emular el comportamiento del sistema. De
+                    esta forma, se consigue una mayor <strong>tasa de acierto</strong>. Todo empieza por modelar
+                    probabilísticamente una relación entre causa y efecto, estableciendo un aprendizaje a partir de
+                    observaciones.
+                </div>
+
+                <p class="text-content">
+                    Podemos afirmar que la estadística y el aprendizaje automático convergen al aplicar las mismas
+                    técnicas de análisis para dar respuesta a una misma cuestión: ¿cómo aprendemos de los datos?<a
+                        href="#ref14" class="reference">[14]</a>. En las siguientes secciones veremos cómo se apoya la
+                    inteligencia artificial actual en la ciencia de los datos.
+                </p>
+
+                <div class="analogy-box">
+                    <h4>Relación entre Estadística y Machine Learning</h4>
+                    <p>Pero concretando más, explica:</p>
+                    <p>"Las estadísticas enfatizan la <strong>inferencia estadística formal</strong> (intervalos de
+                        confianza, pruebas de hipótesis, estimadores óptimos) en problemas de baja dimensión (conjuntos
+                        de datos más pequeños) y el aprendizaje automático se centra más en hacer <strong>predicciones
+                            precisas de alta dimensión</strong> (grandes conjuntos de datos)"<a href="#ref15"
+                            class="reference">[15]</a>.</p>
+                </div>
+
+                <div class="quote-box">
+                    Las estadísticas son solo aprendizaje automático glorificado.
+                    <div class="quote-author">— Robert Tibshirani, Profesor de Estadística y Bioestadística, Stanford
+                        University<a href="#ref16" class="reference">[16]</a></div>
+                </div>
+
+                <p class="text-content">
+                    Ambos métodos se centran en extraer conocimiento o ideas de los datos, pero sus métodos se ven
+                    afectados por sus diferencias culturales inherentes. La razón principal de que estos temas sean
+                    efectivamente los mismos es que cubren casi exactamente el mismo material y usan casi exactamente
+                    las mismas técnicas.
+                </p>
+
+                <div class="info-box note">
+                    <div class="info-box-title">Integración Práctica</div>
+                    <p>Además, cada paso en un proyecto de Machine Learning requiere el uso de un método estadístico.
+                        Tanto para comprender los datos utilizados en el entrenamiento de un modelo de aprendizaje
+                        automático como en la interpretación de los resultados obtenidos tras probar diferentes modelos
+                        de aprendizaje automático, se requieren <strong>métodos estadísticos</strong>.</p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="section-title">2.2.- Modelos Bayesianos</h2>
+
+                <p class="text-content">
+                    El <strong>teorema de Bayes</strong> proporciona una manera de calcular la probabilidad de una
+                    hipótesis basada en su probabilidad previa, las probabilidades de observar diversos datos dada la
+                    hipótesis y los datos observados en sí<a href="#ref17" class="reference">[17]</a>.
+                </p>
+
+                <p class="text-content">
+                    El teorema de Bayes también proporciona una forma de pensar sobre la evaluación y selección de
+                    diferentes modelos para el desarrollo de un conjunto de datos en el aprendizaje automático aplicado.
+                    Maximizar la probabilidad de que un modelo se ajuste a un conjunto de datos se conoce más
+                    generalmente como máximo a posteriori, o MAP para abreviar, y proporciona un marco probabilístico
+                    para el modelado predictivo.
+                </p>
+
+                <div class="definition-box">
+                    <h4>Teorema de Bayes</h4>
+                    <p>El Teorema de Bayes enunciado por el matemático inglés Thomas Bayes (1702-1761) es un sistema de
+                        cálculo de probabilidades pero hecho de forma inversa a cómo se calculan habitualmente<a
+                            href="#ref18" class="reference">[18]</a>.</p>
+                    <p>Tiene en cuenta la información que conocemos que se ha producido en determinado entorno con
+                        determinados factores para saber cuáles de esos factores han producido esas consecuencias.</p>
+                    <p>Es decir, conociendo las consecuencias que se producen podemos calcular sus orígenes (siempre en
+                        porcentajes) y la probabilidad de que se hayan producido en uno u otro grupo.</p>
+                </div>
+
+                <div class="formula-label">Fórmula del Teorema de Bayes</div>
+                <div class="formula-box">
+                    P(A|B) = [P(B|A) × P(A)] / P(B)
+                </div>
+
+                <p class="text-content">
+                    Donde B es el suceso que conocemos, A el conjunto de posibles causas, excluyentes entre sí, que
+                    pueden producirlo y, por tanto, P(A|B) son las probabilidades a posteriori, P(A) las posibilidades a
+                    priori y P(B|A) la posibilidad de que se dé B en cada hipótesis de A.
+                </p>
+
+                <h3 style="color: var(--primary-purple); margin-top: 2rem;">Modelo Probabilístico</h3>
+
+                <p class="text-content">
+                    Un algoritmo o modelo de aprendizaje automático es una forma específica de pensar sobre las
+                    relaciones estructuradas en los datos. De esta manera, un modelo puede considerarse como una
+                    hipótesis sobre las relaciones en los datos, como la relación entre la entrada (X) y la salida (Y).
+                    La práctica del aprendizaje automático aplicado es la prueba y el análisis de diferentes hipótesis
+                    (modelos) en un conjunto de datos dado.
+                </p>
+
+                <p class="text-content">
+                    El Teorema de Bayes proporciona un modelo probabilístico para describir la relación entre los datos
+                    (D) y una hipótesis (H). Si lo representamos con una fórmula simplificada:
+                </p>
+
+                <div class="formula-label">Modelo Probabilístico Bayesiano</div>
+                <div class="formula-box">
+                    P(h|D) = [P(D|h) × P(h)] / P(D)
+                </div>
+
+                <p class="text-content">
+                    donde la probabilidad de una hipótesis h dados unos datos D, puede calcularse como la probabilidad
+                    de observar los datos dada la hipótesis, multiplicada por la probabilidad de que la hipótesis sea
+                    verdadera independientemente de los datos, y dividido todo por la probabilidad de observar esos
+                    datos independientemente de la hipótesis.
+                </p>
+
+                <div class="key-concept">
+                    La optimización o búsqueda de la hipótesis con la máxima probabilidad posterior en el modelado se
+                    llama <strong>máximo a posteriori</strong> o <strong>MAP</strong>.
+                </div>
+
+                <h3 style="color: var(--primary-purple); margin-top: 2rem;">Algoritmos Naive Bayes</h3>
+
+                <p class="text-content">
+                    Los modelos de <strong>Naive Bayes</strong> son un tipo de algoritmos de aprendizaje automático
+                    basados, como su nombre indica, en el teorema de Bayes. En ellos, se asume que las variables de
+                    entrada son independientes entre sí. Esto es simplificar mucho, pero de ahí viene el nombre "naive"
+                    o inocente<a href="#ref19" class="reference">[19]</a>.
+                </p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Principales Ventajas</h4>
+                        <ul class="advantages-list">
+                            <li>Es una manera <strong>fácil y rápida de predecir clases</strong>, para problemas de
+                                clasificación binarios y multiclase.</li>
+                            <li>En los casos en que sea apropiada una presunción de independencia, el algoritmo se
+                                comporta <strong>mejor que otros modelos de clasificación</strong>, incluso con menos
+                                datos de entrenamiento.</li>
+                            <li>El <strong>desacoplamiento de las distribuciones de características condicionales de
+                                    clase</strong> significan que cada distribución puede ser estimada
+                                independientemente como si tuviera una sola dimensión. Esto ayuda con problemas
+                                derivados de la dimensionalidad y mejora el rendimiento.</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>Principales Desventajas</h4>
+                        <ul class="disadvantages-list">
+                            <li>Aunque son unos clasificadores bastante buenos, los algoritmos Naive Bayes son conocidos
+                                por ser <strong>pobres estimadores</strong>. Por ello, no se deben tomar muy en serio
+                                las probabilidades que se obtienen.</li>
+                            <li>La presunción de independencia Naive muy probablemente no reflejará cómo son los datos
+                                en el mundo real.</li>
+                            <li>Cuando el conjunto de datos de prueba tiene una característica que no ha sido observada
+                                en el conjunto de entrenamiento, el modelo le asignará una probabilidad de cero y será
+                                <strong>inútil realizar predicciones</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box tip">
+                    <div class="info-box-title">💡 Aplicaciones Prácticas de Naive Bayes</div>
+                    <p><strong>Filtrado de spam:</strong> Los clasificadores Naive Bayes son ampliamente utilizados para
+                        identificar correos electrónicos no deseados basándose en la frecuencia de palabras.</p>
+                    <p><strong>Análisis de sentimientos:</strong> Clasificación de opiniones como positivas, negativas o
+                        neutrales en redes sociales y reseñas de productos.</p>
+                    <p><strong>Diagnóstico médico:</strong> Predicción de enfermedades basándose en síntomas observados,
+                        especialmente útil cuando los síntomas son relativamente independientes.</p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="section-title">2.3.- KNN (K-Nearest Neighbors)</h2>
+
+                <p class="text-content">
+                    El método "K Nearest Neighbors" o los "K vecinos más cercanos" es un modelo de aprendizaje
+                    automático supervisado muy sencillo pero efectivo que se suele usar en problemas de clasificación<a
+                        href="#ref20" class="reference">[20]</a>. Se basa, fundamentalmente, en dada una distribución de
+                    casos situados en un mapa de coordenadas, clasificar un nuevo caso mirando los casos que tiene
+                    alrededor. Si la mayoría son de una clase A, el nuevo caso se clasificará como de esa misma clase A.
+                </p>
+                <img src="image01-01.jpg" alt="Ilustración del Algoritmo KNN" class="responsive-image">
+                <div class="definition-box">
+                    <h4>Método de Clasificación No Paramétrico</h4>
+                    <p>Este es un <strong>método de clasificación no paramétrico</strong>, que estima el valor de la
+                        función de densidad de probabilidad o directamente la probabilidad a posteriori de que un
+                        elemento x pertenezca a la clase C a partir de la información proporcionada por el conjunto de
+                        prototipos. En el proceso de aprendizaje no se hace ninguna suposición acerca de la distribución
+                        de las variables de entrada del problema.</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <strong>Característica Importante</strong>
+                        <p>Este algoritmo no "aprende", no se entrena ni se fijan valores de parámetros internos.
+                            Simplemente se utiliza el conjunto de datos como "base de conocimiento" y se hacen las
+                            predicciones sobre dicha base. Esto puede ser un inconveniente, pues cada vez que hay que
+                            hacer una predicción, se utiliza todo el dataset, y esto requiere de memoria y recursos de
+                            procesamiento importantes si estamos trabajando con un volumen grande de datos.</p>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--primary-purple); margin-top: 2rem;">Funcionamiento del Algoritmo KNN</h3>
+
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Calcular Distancias</h4>
+                            <p>Se calcula la distancia entre el ítem a clasificar y el resto de ítems del dataset de
+                                entrenamiento. Las métricas más comunes son la distancia Euclidiana, Manhattan, o
+                                Minkowski.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-arrow">↓</div>
+
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Seleccionar K Vecinos</h4>
+                            <p>Se fija el parámetro K a un cierto valor y se seleccionan los "K" elementos más cercanos
+                                (con menor distancia, según la función que se use).</p>
+                        </div>
+                    </div>
+
+                    <div class="process-arrow">↓</div>
+
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Votación de Mayoría</h4>
+                            <p>Se realiza una "votación de mayoría" entre los k puntos: los de una clase/etiqueta que
+                                sean mayoría, decidirán su clasificación final.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box tip">
+                    <div class="info-box-title">💡 Consideraciones para Elegir K</div>
+                    <p>A la hora de utilizar este algoritmo, es importante elegir bien el valor del parámetro K, pues
+                        este terminará casi por definir a qué grupo pertenecerán los puntos, sobre todo en las
+                        "fronteras" entre grupos.</p>
+                    <p><strong>K muy pequeño:</strong> Puede hacer que el ruido o cualquier anomalía nos lleve a una
+                        clasificación errónea. El modelo será muy sensible a valores atípicos.</p>
+                    <p><strong>K muy grande:</strong> Hace que se generalice tanto la densidad de las clases que
+                        perdemos definición. Las fronteras de decisión se vuelven muy suaves.</p>
+                    <p><strong>Recomendación:</strong> Es recomendable no elegir valores pares de K para evitar
+                        "empates" en la votación de clasificación.</p>
+                </div>
+
+                <div class="example-highlight">
+                    <h4>Aplicaciones Prácticas de KNN</h4>
+                    <p><strong>Sistemas de recomendación:</strong> Netflix y Amazon utilizan variantes de KNN para
+                        recomendar productos o contenido basándose en usuarios similares.</p>
+                    <p><strong>Reconocimiento de patrones:</strong> Clasificación de dígitos manuscritos (como en el
+                        dataset MNIST), reconocimiento facial, y detección de anomalías.</p>
+                    <p><strong>Diagnóstico médico:</strong> Clasificación de tumores como benignos o malignos basándose
+                        en características similares de casos previos.</p>
+                    <p><strong>Predicción crediticia:</strong> Evaluación del riesgo crediticio comparando perfiles de
+                        clientes con historiales conocidos.</p>
+                </div>
+
+                
+                <div class="code-container">
+                    <div class="code-header">
+                        <span>Ejemplo: Implementación Básica de KNN en Python</span>
+                        <span class="language-badge">Python</span>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+from sklearn.metrics import accuracy_score
+
+# Cargar dataset de ejemplo (Iris)
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(
+    iris.data, iris.target, test_size=0.3, random_state=42
+)
+
+# Crear modelo KNN con k=5
+knn = KNeighborsClassifier(n_neighbors=5)
+
+# Entrenar (almacenar datos)
+knn.fit(X_train, y_train)
+
+# Predecir
+y_pred = knn.predict(X_test)
+
+# Evaluar precisión
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Precisión del modelo: {accuracy:.2f}")</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <div class="references-section">
+                <h3>Referencias y Lecturas Adicionales</h3>
+
+                <div class="reference-item" id="ref1">
+                    [1] Campbell, M., Hoane Jr, A. J., & Hsu, F. H. (2002). Deep Blue. <em>Artificial intelligence</em>,
+                    134(1-2), 57-83. DOI: 10.1016/S0004-3702(01)00129-1
+                </div>
+
+                <div class="reference-item" id="ref2">
+                    [2] LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. <em>Nature</em>, 521(7553), 436-444.
+                    DOI: 10.1038/nature14539
+                </div>
+
+                <div class="reference-item" id="ref3">
+                    [3] López, G., Quesada, L., & Guerrero, L. A. (2017). Alexa vs Siri vs Cortana vs Google Assistant:
+                    a comparison of speech-based natural user interfaces. In <em>International Conference on Applied
+                        Human Factors and Ergonomics</em> (pp. 241-250). Springer, Cham.
+                </div>
+
+                <div class="reference-item" id="ref4">
+                    [4] Ferrucci, D., et al. (2010). Building Watson: An overview of the DeepQA project. <em>AI
+                        Magazine</em>, 31(3), 59-79. DOI: 10.1609/aimag.v31i3.2303
+                </div>
+
+                <div class="reference-item" id="ref5">
+                    [5] Gomez-Uribe, C. A., & Hunt, N. (2016). The netflix recommender system: Algorithms, business
+                    value, and innovation. <em>ACM Transactions on Management Information Systems (TMIS)</em>, 6(4),
+                    1-19. DOI: 10.1145/2843948
+                </div>
+
+                <div class="reference-item" id="ref6">
+                    [6] Searle, J. R. (1980). Minds, brains, and programs. <em>Behavioral and brain sciences</em>, 3(3),
+                    417-424. DOI: 10.1017/S0140525X00005756
+                </div>
+
+                <div class="reference-item" id="ref7">
+                    [7] Gödel, K. (1931). Über formal unentscheidbare Sätze der Principia Mathematica und verwandter
+                    Systeme I. <em>Monatshefte für mathematik und physik</em>, 38(1), 173-198.
+                </div>
+
+                <div class="reference-item" id="ref8">
+                    [8] Dreyfus, H. L. (1992). <em>What computers still can't do: A critique of artificial reason</em>.
+                    MIT press. ISBN: 978-0262540674
+                </div>
+
+                <div class="reference-item" id="ref9">
+                    [9] Dortier, J. F. (1999). <em>Le cerveau et la pensée: Le nouvel âge des sciences cognitives</em>.
+                    Sciences Humaines Éditions. ISBN: 978-2912601032
+                </div>
+
+                <div class="reference-item" id="ref10">
+                    [10] Reed, S., et al. (2022). A Generalist Agent. <em>arXiv preprint arXiv:2205.06175</em>.
+                    DeepMind. <a href="https://arxiv.org/abs/2205.06175"
+                        target="_blank">https://arxiv.org/abs/2205.06175</a>
+                </div>
+
+                <div class="reference-item" id="ref11">
+                    [11] Voss, P. (2007). Essentials of general intelligence: The direct path to artificial general
+                    intelligence. In <em>Artificial general intelligence</em> (pp. 131-157). Springer, Berlin,
+                    Heidelberg.
+                </div>
+
+                <div class="reference-item" id="ref12">
+                    [12] Tiku, N. (2022). "The Google engineer who thinks the company's AI has come to life". <em>The
+                        Washington Post</em>, June 11, 2022. <a
+                        href="https://www.washingtonpost.com/technology/2022/06/11/google-ai-lamda-blake-lemoine/"
+                        target="_blank">Washington Post Article</a>
+                </div>
+
+                <div class="reference-item" id="ref13">
+                    [13] Vaswani, A., et al. (2017). Attention is all you need. In <em>Advances in neural information
+                        processing systems</em> (pp. 5998-6008). arXiv:1706.03762
+                </div>
+
+                <div class="reference-item" id="ref14">
+                    [14] Hastie, T., Tibshirani, R., & Friedman, J. (2009). <em>The elements of statistical learning:
+                        data mining, inference, and prediction</em>. Springer Science & Business Media. ISBN:
+                    978-0387848570
+                </div>
+
+                <div class="reference-item" id="ref15">
+                    [15] Breiman, L. (2001). Statistical modeling: The two cultures. <em>Statistical science</em>,
+                    16(3), 199-231. DOI: 10.1214/ss/1009213726
+                </div>
+
+                <div class="reference-item" id="ref16">
+                    [16] Tibshirani, R. (1996). Regression shrinkage and selection via the lasso. <em>Journal of the
+                        Royal Statistical Society: Series B (Methodological)</em>, 58(1), 267-288. Robert Tibshirani -
+                    Stanford University
+                </div>
+
+                <div class="reference-item" id="ref17">
+                    [17] Bayes, T., & Price, R. (1763). An essay towards solving a problem in the doctrine of chances.
+                    <em>Philosophical Transactions of the Royal Society of London</em>, 53, 370-418.
+                </div>
+
+                <div class="reference-item" id="ref18">
+                    [18] McGrayne, S. B. (2011). <em>The theory that would not die: how Bayes' rule cracked the enigma
+                        code, hunted down Russian submarines, & emerged triumphant from two centuries of
+                        controversy</em>. Yale University Press. ISBN: 978-0300169690
+                </div>
+
+                <div class="reference-item" id="ref19">
+                    [19] Rish, I. (2001). An empirical study of the naive Bayes classifier. In <em>IJCAI 2001 workshop
+                        on empirical methods in artificial intelligence</em> (Vol. 3, No. 22, pp. 41-46). IBM New York.
+                </div>
+
+                <div class="reference-item" id="ref20">
+                    [20] Cover, T., & Hart, P. (1967). Nearest neighbor pattern classification. <em>IEEE transactions on
+                        information theory</em>, 13(1), 21-27. DOI: 10.1109/TIT.1967.1053964
+                </div>
+            </div>
+
+            <div class="conclusion-box">
+                <strong>Conclusión:</strong> La transición de la IA clásica al aprendizaje automático representa un
+                cambio fundamental en cómo abordamos la inteligencia artificial. Mientras los sistemas expertos
+                dependían de reglas codificadas manualmente, los enfoques modernos basados en estadística y probabilidad
+                permiten que los sistemas aprendan patrones complejos directamente de los datos, abriendo nuevas
+                posibilidades hacia una IA más flexible y potente.
+            </div>
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</body>
+
+</html>

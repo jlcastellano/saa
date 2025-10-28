@@ -1,0 +1,755 @@
+/* Variables CSS para fácil personalización */
+:root {
+    --primary-blue: #2563eb;
+    --secondary-blue: #3b82f6;
+    --light-blue: #dbeafe;
+    --primary-purple: #7c3aed;
+    --secondary-purple: #8b5cf6;
+    --light-purple: #ede9fe;
+    --background-white: #ffffff;
+    --text-dark: #1f2937;
+    --text-gray: #6b7280;
+    --border-gray: #e5e7eb;
+    --code-bg: #1e293b;
+    --success-green: #10b981;
+    --header-height: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-white);
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--header-height);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Controles del header */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - var(--header-height));
+}
+
+/* Contenido principal */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    background-color: var(--background-white);
+    transition: all 0.3s ease;
+}
+
+.content-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--light-blue);
+}
+
+.content-title {
+    color: var(--primary-blue);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.content-subtitle {
+    color: var(--text-gray);
+    font-size: 1.2rem;
+}
+
+/* Estilos para contenido educativo */
+.lesson-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    color: var(--primary-purple);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-purple);
+}
+
+.text-content {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+/* Estilos para código */
+.code-container {
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border: 1px solid var(--border-gray);
+}
+
+.code-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.language-badge {
+    background-color: rgba(255,255,255,0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+.code-content {
+    background-color: var(--code-bg);
+    padding: 0;
+    position: relative;
+}
+
+.code-content pre {
+    margin: 0;
+    padding: 1.5rem;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.copy-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--success-green);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #059669;
+}
+
+/* Cajas de información */
+.info-box {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.info-box.note {
+    background-color: var(--light-blue);
+    border-left-color: var(--primary-blue);
+}
+
+.info-box.tip {
+    background-color: var(--light-purple);
+    border-left-color: var(--primary-purple);
+}
+
+.info-box.warning {
+    background-color: #fef3cd;
+    border-left-color: #f59e0b;
+}
+
+.info-box-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .container {
+        flex-direction: column;
+        position: relative;
+    }
+
+    .main-content {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .content-title {
+        font-size: 2rem;
+    }
+
+    .code-content pre {
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+
+    .copy-button {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+
+}
+
+
+/* Estilos para tablas */
+table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: var(--background-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-gray);
+}
+
+/* Encabezados de tabla */
+table th {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 1.2rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+/* Celdas de tabla */
+table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-gray);
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    vertical-align: top;
+}
+
+/* Primera columna con énfasis */
+table td:first-child {
+    font-weight: 600;
+    color: var(--primary-purple);
+    background-color: rgba(124, 58, 237, 0.03);
+    min-width: 150px;
+}
+
+/* Última columna (sintaxis) con estilo de código */
+table td:last-child {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.85rem;
+    background-color: rgba(30, 41, 59, 0.03);
+    color: var(--text-dark);
+    word-break: break-word;
+}
+
+/* Filas alternadas */
+table tr:nth-child(even) td {
+    background-color: rgba(37, 99, 235, 0.02);
+}
+
+table tr:nth-child(even) td:first-child {
+    background-color: rgba(124, 58, 237, 0.05);
+}
+
+table tr:nth-child(even) td:last-child {
+    background-color: rgba(30, 41, 59, 0.05);
+}
+
+/* Última fila sin borde inferior */
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Efecto hover en filas */
+table tbody tr {
+    transition: all 0.3s ease;
+}
+
+table tbody tr:hover {
+    background-color: var(--light-blue);
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+table tbody tr:hover td {
+    background-color: transparent;
+}
+
+table tbody tr:hover td:first-child {
+    background-color: rgba(124, 58, 237, 0.08);
+}
+
+table tbody tr:hover td:last-child {
+    background-color: rgba(30, 41, 59, 0.08);
+}
+
+/* Responsive para tablas */
+@media (max-width: 768px) {
+    /* Hacer la tabla scrolleable horizontalmente en móvil */
+    .table-container {
+        overflow-x: auto;
+        margin: 1.5rem -1rem;
+        padding: 0 1rem;
+    }
+    
+    table {
+        min-width: 600px;
+        font-size: 0.85rem;
+    }
+    
+    table th {
+        padding: 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    table td {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    table td:last-child {
+        font-size: 0.75rem;
+    }
+}
+
+/* Contenedor opcional para tablas con scroll */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.table-responsive table {
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* Indicador de scroll para móvil */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: var(--light-blue);
+    border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: var(--secondary-blue);
+    border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue);
+}
+
+/* Estilo especial para tablas de comparación */
+.comparison-table th:first-child {
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+}
+
+.comparison-table td:first-child {
+    background-color: rgba(139, 92, 246, 0.05);
+    color: var(--primary-purple);
+    font-weight: 700;
+}
+
+/* Badge para tipos de registros DNS */
+.dns-record-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Estilos para imágenes */
+.responsive-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2rem auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-gray);
+}
+
+/* CSS adicional para los nuevos componentes */
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 40px;
+    margin: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-purple), var(--secondary-purple));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-purple);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.75rem;
+    box-shadow: 0 0 0 4px var(--background-white);
+}
+
+.timeline-content {
+    background: var(--light-purple);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-purple);
+}
+
+.timeline-content h4 {
+    color: var(--primary-purple);
+    margin-bottom: 0.5rem;
+}
+
+/* Component list */
+.component-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.component-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--light-purple);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-purple);
+}
+
+.component-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-purple);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.component-content h4 {
+    color: var(--primary-purple);
+    margin-bottom: 0.5rem;
+}
+
+/* Analogy box */
+.analogy-box {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-left: 4px solid var(--primary-blue);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.analogy-box h4 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Security features */
+.security-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.security-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--light-purple);
+    border-radius: 8px;
+}
+
+.security-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.security-item h4 {
+    color: var(--primary-purple);
+    margin-bottom: 0.5rem;
+}
+
+/* Conclusion box */
+.conclusion-box {
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+}
+
+/* Comparison box */
+.comparison-box {
+    background: var(--light-blue);
+    border-left: 4px solid var(--primary-blue);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.comparison-box h4 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.comparison-box ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.comparison-box li {
+    margin: 0.5rem 0;
+}
+
+/* Process flow */
+.process-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.process-step {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 600px;
+    padding: 1.5rem;
+    background: var(--light-purple);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-purple);
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-purple);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.step-content h4 {
+    color: var(--primary-purple);
+    margin-bottom: 0.5rem;
+}
+
+.step-content code {
+    background: rgba(124, 58, 237, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.process-arrow {
+    font-size: 2rem;
+    color: var(--primary-purple);
+    margin: 0.5rem 0;
+}
+
+/* Definition box */
+.definition-box {
+    background: var(--light-blue);
+    border-left: 4px solid var(--primary-blue);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.definition-box h4 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+/* Verification list */
+.verification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.verification-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem;
+    background: var(--light-purple);
+    border-radius: 8px;
+}
+
+.verification-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--success-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* Warning box */
+.warning-box {
+    display: flex;
+    gap: 1rem;
+    background: #fff7ed;
+    border-left: 4px solid #f59e0b;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.warning-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.warning-box strong {
+    color: #f59e0b;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+      /* Asegurar que el contenido sea seleccionable */
+        body {
+            user-select: text; /* Permitir selección */
+            -webkit-user-select: text; /* Para Safari */
+            -moz-user-select: text; /* Para Firefox */
+            -ms-user-select: text; /* Para IE/Edge */
+        }
+
+        /* Si tienes bloques de código, asegúrate de que sean seleccionables */
+        pre, code {
+            user-select: text;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+        }
+
+        /* Para botones y elementos interactivos, puedes desactivar la selección */
+        button, .copy-button {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Asegurarse de que los contenedores de código permitan selección */
+        .code-container {
+            position: relative; /* Si usas posicionamiento */
+            overflow: auto; /* Para scroll si es necesario */
+        }
+
+        /* Si tienes overlays o elementos superpuestos */
+        .overlay {
+            pointer-events: none; /* Permite que los clicks pasen a través */
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            word-wrap: break-word;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }

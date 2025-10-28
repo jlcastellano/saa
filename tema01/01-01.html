@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De la IA Clásica al Aprendizaje Automático</title>
+    <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/vs2015.min.css">
+        <style>
+        /* CSS adicional para referencias y elementos pedagógicos */
+        .reference {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.25rem;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .reference:hover {
+            background: var(--primary-purple);
+            text-decoration: none;
+        }
+
+        .references-section {
+            background: var(--light-blue);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .references-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .reference-item {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .reference-item::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .reference-item a {
+            color: var(--primary-blue);
+            word-break: break-all;
+        }
+
+        .example-highlight {
+            background: linear-gradient(120deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-purple);
+        }
+
+        .example-highlight h4 {
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .example-highlight h4::before {
+            content: '💡';
+            font-size: 1.5rem;
+        }
+
+        .key-concept {
+            background: var(--light-purple);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-purple);
+        }
+
+        .key-concept strong {
+            color: var(--primary-purple);
+        }
+
+        .formula-box {
+            background: var(--code-bg);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .formula-label {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--primary-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .comparison-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .advantages-list li {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .advantages-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .disadvantages-list li {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .disadvantages-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-purple);
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-purple);
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-purple);
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Sistemas de Aprendizaje Automático</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="content-header">
+                <h1 class="content-title">De la IA Clásica al Aprendizaje Automático</h1>
+                <p class="content-subtitle">Unidad introductoria al paradigma actual de la IA</p>
+            </div>
+
+            <section class="lesson-section">
+                <h2 class="section-title">1.1.- Inteligencia Artificial Débil</h2>
+
+                <div class="definition-box">
+                    <h4>Definición: Inteligencia Artificial Débil (Narrow AI)</h4>
+                    <p>El concepto de <strong>inteligencia artificial débil</strong> se refiere a agentes y modelos
+                        inteligentes que están especializados en un tipo de tarea, dentro de un campo de especialización
+                        concreto. Por ejemplo, un ordenador que juega al ajedrez (como Deep Blue de IBM)<a href="#ref1"
+                            class="reference">[1]</a>, o un modelo de reconocimiento de imagen (como los basados en
+                        arquitecturas CNN)<a href="#ref2" class="reference">[2]</a>.</p>
+                </div>
+
+                <p class="text-content">
+                    Diseñar una inteligencia artificial de este tipo no es igual en el modelo clásico que en el
+                    paradigma actual del <strong>aprendizaje automático</strong>. Los sistemas expertos que se
+                    programaban a base de reglas "if-else" del modelo clásico eran más rígidos y no era nada sencillo
+                    actualizarlos o hacerlos evolucionar. Además, dependían mucho del equipo que lo diseñaba y
+                    construía, con el alto riesgo de introducir sesgos que eso conlleva.
+                </p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>✓ Ventajas de la IA Débil</h4>
+                        <ul class="advantages-list">
+                            <li>Actualmente es relativamente <strong>sencilla de conseguir y desarrollar</strong>.</li>
+                            <li>Se controla más fácilmente y no presenta <strong>comportamientos demasiado
+                                    inesperados</strong>.</li>
+                            <li>Permite <strong>arquitecturas modulares</strong>, con las que combinar distintos
+                                talentos o capacidades según las necesidades del entorno en el que se despliega.</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>✗ Inconvenientes de la IA Débil</h4>
+                        <ul class="disadvantages-list">
+                            <li>Es un <strong>sistema "ciego"</strong>, que no cuenta con todo el contexto de la
+                                situación, por lo que puede mal-interpretar entradas inusuales.</li>
+                            <li>Es <strong>muy limitada</strong>, solo sirve para aplicaciones muy concretas.</li>
+                            <li>Suelen ser sistemas que no ofrecen una <strong>experiencia de usuario tan cercana o
+                                    personalizada</strong> como la de un ser humano.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="key-concept">
+                    En resumen, una IA Débil está concebida para ser aplicada en un <strong>ámbito específico de
+                        problemas</strong>, y no tanto de tener un comportamiento similar a la inteligencia humana.
+                    Desde este punto de vista, es impensable concebir que uno de estos sistemas constituyan una mente,
+                    un estado mental o conciencia propia.
+                </div>
+
+                <h3 style="color: var(--primary-purple); margin-top: 2rem;">Ejemplos de Inteligencia Artificial Débil
+                </h3>
+
+                <div class="example-highlight">
+                    <h4>Alexa, Siri y Google Assistant</h4>
+                    <p>Estos modelos de asistentes virtuales que están presentes en móviles y dispositivos para el
+                        hogar, son lo que se conoce como asistentes conversacionales<a href="#ref3"
+                            class="reference">[3]</a>. Son un ejemplo de que una inteligencia artificial estrecha puede
+                        simular un comportamiento humano pero no ser capaz de llegar a dar el mismo resultado o ejecutar
+                        la misma tarea que la inteligencia humana proporcionaría.</p>
+                    <p><strong>Tecnología subyacente:</strong> Utilizan modelos de procesamiento del lenguaje natural
+                        (NLP), reconocimiento de voz mediante redes neuronales profundas, y sistemas de diálogo basados
+                        en árboles de decisión o modelos más avanzados de transformers.</p>
+                </div>
+
+                <div class="example-highlight">
+                    <h4>IBM Watson</h4>
+                    <p>Este sistema cognitivo es capaz de dotar de la información precisa y necesaria en cada momento
+                        bajo demanda, y en un contexto de conversación en lenguaje natural o coloquial<a href="#ref4"
+                            class="reference">[4]</a>. Puede analizar gran cantidad de datos y extrapolar o inferir
+                        conclusiones a partir de ellos.</p>
+                    <p><strong>Aplicaciones destacadas:</strong> Watson se ha utilizado en oncología (Watson for
+                        Oncology), diagnóstico médico, análisis financiero y servicio al cliente. Su victoria en el
+                        concurso Jeopardy! en 2011 demostró sus capacidades en procesamiento del lenguaje natural y
+                        recuperación de información.</p>
+                </div>
+
+                <div class="example-highlight">
+                    <h4>Sistemas de Recomendación</h4>
+                    <p>El acto de recomendar una película, un libro o un sitio que visitar parece tan humano que hace
+                        difícil clasificar este tipo de sistemas como inteligencia artificial débil. Tras una
+                        recomendación suele haber vivencias y experiencias muy variadas, entremezcladas con diversas
+                        acciones y hechos. Y lo cierto es que estos sistemas se entrenan con conjuntos de datos que
+                        configuran, con un cierto grado de simplificación, los distintos perfiles de gustos de las
+                        personas según ciertos parámetros de experiencias registradas<a href="#ref5"
+                            class="reference">[5]</a>.</p>
+                    <p><strong>Ejemplos notables:</strong> El sistema de recomendación de Netflix (basado en filtrado
+                        colaborativo y deep learning), el algoritmo de Amazon (que usa análisis de patrones de compra),
+                        y Spotify (que combina filtrado colaborativo con análisis de señales de audio).</p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="section-title">La Posibilidad Real de la Inteligencia Artificial Fuerte</h2>
+
+                <p class="text-content">
+                    La posibilidad real de la Inteligencia Artificial Fuerte se ha empezado a estudiar sobre todo a
+                    partir de que el filósofo John Searle presentara un contra-argumento a ésta en la publicación «The
+                    Chinese Room Argument» (1980)<a href="#ref6" class="reference">[6]</a> así como a raíz del argumento
+                    del primer teorema de incompletitud de Gödel, que afirma que nunca una máquina podría adquirir algún
+                    tipo de inteligencia humana<a href="#ref7" class="reference">[7]</a>. Los contra-argumentos a la IA
+                    fuerte no han dejado de aparecer, como por ejemplo el filósofo heideggeriano Hubert Dreyfus, que
+                    dedicó gran parte de su obra argumentando como la IA llegaría a fallar porque simplemente el cerebro
+                    humano y mente humana no son análogas con el hardware y software de un ordenador<a href="#ref8"
+                        class="reference">[8]</a>. Y sin duda, nuevos estudios demuestran que la mente humana no es como
+                    un ordenador.
+                </p>
+
+                <div class="info-box tip">
+                    <div class="info-box-title">Argumentos filosóficos clave</div>
+                    <p><strong>El Argumento de la Habitación China (Searle, 1980):</strong> Propone un experimento
+                        mental donde una persona que no habla chino sigue instrucciones en inglés para responder
+                        preguntas en chino, sugiriendo que puede parecer que comprende chino sin realmente comprenderlo,
+                        análogo a cómo una computadora procesa símbolos sin comprensión genuina.</p>
+                    <p><strong>Teorema de Incompletitud de Gödel (1931):</strong> Demuestra que en cualquier sistema
+                        formal suficientemente complejo, existen proposiciones verdaderas que no pueden ser probadas
+                        dentro del sistema, lo cual algunos interpretan como evidencia de que las máquinas nunca podrán
+                        replicar completamente el razonamiento humano.</p>
+                </div>
+
+                <p class="text-content">
+                    A partir de este punto, hay dos razones que hacen que tenga una mayor consideración la <strong>IA
+                        débil</strong>:
+                </p>
+
+                <div class="component-list">
+                    <div class="component-item">
+                        <div class="component-number">1</div>
+                        <div class="component-content">
+                            <h4>Perspectiva Lógica</h4>
+                            <p>Desde la vertiente lógica, se pueden estudiar los algoritmos y las funciones matemáticas
+                                con mejor claridad.</p>
+                        </div>
+                    </div>
+
+                    <div class="component-item">
+                        <div class="component-number">2</div>
+                        <div class="component-content">
+                            <h4>Perspectiva Filosófica</h4>
+                            <p>Desde una perspectiva clásica de la filosofía continental, la debilidad intrínseca de la
+                                IA se podría argumentar a partir de la siguiente cuestión: nosotros los humanos
+                                fabricamos las herramientas y sistemas y, por tanto, incluye dentro nuestra propia
+                                fragilidad, la posibilidad del fallo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    Cuarenta años después de su creación, la importancia de la IA está, cuando menos, mitigada. Los
+                    especialistas se refieren cada vez más (después del análisis de Searle) al proyecto de una IA débil
+                    opuesto a la IA fuerte, del principal. El proyecto de la «IA fuerte» era encontrar y reconstruir la
+                    forma en que el hombre piensa y después superarla. El proyecto de la «IA débil» es más modesto. Se
+                    trata de simular comportamientos humanos «considerados inteligentes» por los métodos de la
+                    ingeniería, sin preocuparse de saber si el hombre procede de la misma manera. Hoy día se prefiere
+                    hablar de lógicas «de ayuda» a la creación o a la toma de decisiones más que de máquinas que
+                    remplazarían al hombre.
+                    <div class="quote-author">— Jean Francois Dortier, "Le cerveau et la pensée"<a href="#ref9"
+                            class="reference">[9]</a></div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="section-title">Aproximación Técnica a una Arquitectura Multitarea</h2>
+
+                <p class="text-content">
+                    Más allá de que realmente sea posible construir un modelo con las capacidades de conciencia,
+                    sensibilidad, sabiduría y autoconocimiento, lo que sí se está explorando, por el momento, es la
+                    <strong>construcción de modelos, basados en redes neuronales profundas, que sean capaces de ejecutar
+                        tareas en diferentes contextos</strong>.
+                </p>
+
+                <div class="example-highlight">
+                    <h4>DeepMind Gato: Un Agente Generalista</h4>
+                    <p>Deepmind, a mediados de 2022, anunció un posible avance hacia una IA general con su nuevo modelo
+                        "Gato"<a href="#ref10" class="reference">[10]</a>. Según anunció el laboratorio de inteligencia
+                        artificial propiedad de Alphabet, este modelo puede jugar videojuegos de Atari, subtitular
+                        imágenes, chatear y apilar bloques con un brazo robótico real. En general, Gato puede realizar
+                        hasta 604 tareas diferentes.</p>
+                    <p><strong>Arquitectura técnica:</strong> Gato utiliza una arquitectura Transformer con 1.2 mil
+                        millones de parámetros que procesa secuencias de tokens multimodales, permitiendo que el mismo
+                        modelo maneje texto, imágenes y acciones robóticas.</p>
+                    <p><strong>Limitación importante:</strong> Lo malo es que Gato no realiza las tareas tan bien como
+                        aquellos modelos que solo pueden hacer una cosa. Es un modelo "generalista" en el sentido que
+                        puede hacer muchas cosas diferentes al mismo tiempo, pero eso es muy distinto a una IA "general"
+                        capaz de adaptarse de manera eficaz a nuevas tareas distintas a aquellas en las que el modelo
+                        fue entrenado.</p>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-title">⚠️ Distinción Crítica</div>
+                    <p><strong>Modelo Generalista vs IA General:</strong> Un modelo generalista puede realizar múltiples
+                        tareas para las que fue entrenado. Una IA general podría adaptarse y aprender nuevas tareas sin
+                        reentrenamiento específico, mostrando transferencia de conocimiento verdaderamente flexible,
+                        similar a la inteligencia humana.</p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2 class="section-title">Conciencia Artificial</h2>
+
+                <p class="text-content">
+                    El paso final del desarrollo de la IA es construir sistemas que puedan formar representaciones sobre
+                    sí mismos. En última instancia, los investigadores de la IA tendrán que comprender no solo la
+                    conciencia, sino también construir máquinas que la tengan.
+                </p>
+
+                <p class="text-content">
+                    Nada garantiza que el desarrollo de una IA fuerte o general implique el surgimiento de la conciencia
+                    artificial o que se genere una conciencia emergente, pero esta tiende a ser considerada como la
+                    posibilidad más plausible. La razón por la cual se cree que la existencia de uno de estos conceptos
+                    probablemente lleve al otro deriva de cómo de intrínsecamente entrelazadas se encuentran la
+                    conciencia y la inteligencia general en los seres vivos.
+                </p>
+
+                <div class="key-concept">
+                    <strong>Perspectiva de Peter Voss:</strong> Peter Voss, profesional del campo de la IA fuerte,
+                    justifica la conciencia fundamental de las cualidades necesarias para el desarrollo, tanto de un
+                    sistema de IA fuerte, como de una conciencia artificial afirmando que las personas poseen
+                    "autoconciencia conceptual" (conceptos abstractos del "yo" físico y mental), característica que
+                    resultaría imprescindible en dicha IA, ya que esta tendría que "poder conceptualizar qué acciones ha
+                    tomado, de qué acciones es capaz, y cuáles son sus efectos más probables"<a href="#ref11"
+                        class="reference">[11]</a>.
+                </div>
+
+                <div class="example-highlight">
+                    <h4>El Caso LaMDA: ¿Conciencia o Ilusión?</h4>
+                    <p>En plena carrera por el mejor algoritmo conversacional, Blake Lemoine, un ingeniero de Google se
+                        refirió al sistema de IA en el que trabajaba, LaMDA, como una máquina pensante y sintiente<a
+                            href="#ref12" class="reference">[12]</a>. LaMDA (Language Model for Dialogue Applications,
+                        modelo de lenguaje para aplicaciones de diálogo, en español) fue diseñado por Google en 2021 y
+                        tiene como base los transformers, es decir, un entrenador de redes neuronales artificiales
+                        profundas.</p>
+                    <p><strong>Contexto técnico:</strong> Para los expertos en Inteligencia Artificial, transformers
+                        como LaMDA han supuesto un hito porque "permiten un procesamiento (de información, de textos)
+                        muy eficiente y han producido una auténtica revolución en el campo del Procesamiento del
+                        Lenguaje Natural"<a href="#ref13" class="reference">[13]</a>.</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <strong>Consenso Científico</strong>
+                        <p>Pero, aunque la conversación sea fluida, de calidad y específica, no es más que una enorme
+                            fórmula que ajusta los parámetros para predecir mejor la siguiente palabra. No tiene ni idea
+                            de lo que está hablando. En definitiva: no tiene <strong>autoconciencia ni sensibilidad como
+                                tales</strong>.</p>
+                        <p>La comunidad científica de IA rechazó ampliamente las afirmaciones de Lemoine, señalando que
+                            los modelos de lenguaje grandes (LLMs) son sistemas de predicción estadística sofisticados,
+                            no entidades conscientes.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De la IA Clásica al Aprendizaje Automático</title>
+    <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/vs2015.min.css">
+        <style>
+        /* CSS adicional para referencias y elementos pedagógicos */
+        .reference {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.25rem;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .reference:hover {
+            background: var(--primary-purple);
+            text-decoration: none;
+        }
+
+        .references-section {
+            background: var(--light-blue);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .references-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .reference-item {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .reference-item::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .reference-item a {
+            color: var(--primary-blue);
+            word-break: break-all;
+        }
+
+        .example-highlight {
+            background: linear-gradient(120deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-purple);
+        }
+
+        .example-highlight h4 {
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .example-highlight h4::before {
+            content: '💡';
+            font-size: 1.5rem;
+        }
+
+        .key-concept {
+            background: var(--light-purple);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-purple);
+        }
+
+        .key-concept strong {
+            color: var(--primary-purple);
+        }
+
+        .formula-box {
+            background: var(--code-bg);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            text-align: center;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .formula-label {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--primary-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .comparison-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .advantages-list li {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .advantages-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .disadvantages-list li {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .disadvantages-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #ef4444;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-purple);
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-purple);
+            opacity: 0.2;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+
+        .quote-author {
+            text-align: right;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--primary-purple);
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Sistemas de Aprendizaje Automático</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="content-header">
+                <h1 class="content-title">De la IA Clásica al Aprendizaje Automático</h1>
+                <p class="content-subtitle">Unidad introductoria al paradigma actual de la IA</p>
+            </div>
+
+            <section class="lesson-section">
+                <h2 class="section-title">Introducción al Módulo</h2>
+                <p class="text-content">
+                    Iniciamos el segundo módulo del curso con esta unidad que baja a un primer nivel entre lo conceptual
+                    y lo técnico. En esta unidad, responderemos a preguntas como:
+                </p>
+
+                <div class="info-box note">
+                    <div class="info-box-title">Preguntas clave que abordaremos:</div>
+                    <p>¿Por qué se cambia de <strong>modelo clásico al modelo basado en aprendizaje automático</strong>?
+                    </p>
+                    <p>¿Qué ventajas tienen los modelos basados en aprendizaje automático frente a los <strong>sistemas
+                            expertos</strong>?</p>
+                    <p>¿Hacia dónde apuntan los planteamientos y objetivos de este paradigma de <strong>inteligencia
+                            artificial</strong>?</p>
+                    <p>¿Qué ciencia sienta las bases de la inteligencia artificial actual?</p>
+                    <p>¿Qué modelos utilizados actualmente reflejan más claramente la <strong>base estadística del
+                            aprendizaje automático</strong>?</p>
+                </div>
+
+                <p class="text-content">
+                    Veremos, también, dos tipos de modelos de aprendizaje automático que reflejan muy bien las raíces
+                    probabilísticas de las técnicas que se empezaron utilizando en esta nueva aproximación a la creación
+                    de inteligencia artificial.
+                </p>
+
+                <div class="key-concept">
+                    <strong>Concepto fundamental:</strong> Aunque la mayoría de alusiones a las diferencias entre ambas
+                    aproximaciones se refieren casi siempre a la capacidad de imitación de la inteligencia humana, esto
+                    no es del todo correcto. El campo de la inteligencia artificial actualmente no se centra en emular
+                    las capacidades o el comportamiento humanos, a no ser que nos refiramos a robots de tipo humanoide o
+                    videojuegos. Ni siquiera sería del todo exacta esta concepción en esos casos. La clave de la
+                    inteligencia artificial actual es la <strong>evolución y avance de la automatización</strong>.
+                </div>
+
+                <p class="text-content">
+                    La mayoría de desarrollos actuales considerados como inteligencia artificial <strong>estrecha o
+                        débil</strong> superan con creces las capacidades humanas en ese ámbito de aplicación. La
+                    capacidad de abstracción y la creatividad de algunos modelos también empiezan a mostrar un alcance
+                    sorprendente.
+                </p>
+
+                <p class="text-content">
+                    En definitiva, es recomendable no basar la distinción entre ambas en la comparación con la
+                    inteligencia humana y centrarse más en la capacidad de realizar tareas en un único ámbito o contexto
+                    o ser capaz de abordar tareas muy diferentes en cuanto a entorno de aplicación y resultados.
+                </p>
+
+                <p class="text-content">
+                    A algunos expertos les gusta la idea de que la inteligencia artificial <strong>débil</strong>
+                    representa el punto en el que estamos ahora y que la inteligencia artificial <strong>fuerte o
+                        general</strong> es el siguiente paso evolutivo o el punto al que nos dirigimos.
+                </p>
+            </section>
+
+        </main>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</body>
+
+</html>
